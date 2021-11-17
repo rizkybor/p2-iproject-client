@@ -24,11 +24,11 @@
                     <div class="d-grid">
                       <button @click="register" class="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2" type="submit">Sign Up with Email</button>
                       <div class="text-center">
-                        <p>Don't have an account? <a class="small" @click="toSignIn" href="#">Sign Up with Email</a></p>
+                        <p>Don't have an account ? <a @click="toSignIn" class="small" href="#">Sign Up with Email</a></p>
                       </div>
                       <br>
                       <div class="text-center">
-                        <p>Want to search the accommodation first?   <a class="small" @click="toHomeUnregister"  href="#">Back to Home</a></p>
+                        <p>Want to search the accommodation first ? <a @click="toHomeUnregister" class="small" href="#">Back to Home</a></p>
                       </div>
                     </div>
                   </form>
@@ -44,10 +44,51 @@
 
 <script>
 export default {
-
+  name: 'Register',
+  data: function () {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    register: function () {
+      const payload = {
+        email: this.email,
+        password: this.password
+      }
+      this.$store.dispatch('register', payload)
+      this.$router.push('/login')
+    },
+    toHomeUnregister () {
+      this.$router.push('/')
+    },
+    toSignIn () {
+      this.$router.push('/login')
+    }
+  }
 }
 </script>
 
 <style>
+.login {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url('https://bromoeastjava.files.wordpress.com/2016/11/ghg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.login-heading {
+  font-weight: 300;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
 
 </style>
