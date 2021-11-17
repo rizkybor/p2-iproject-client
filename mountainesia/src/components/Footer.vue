@@ -1,12 +1,15 @@
 <template>
-  <footer>
-      Mountainesia - iProject Phase2
-  </footer>
+ <HFooter></HFooter>
 </template>
 
 <script>
+import HFooter from 'vue-hacktiv8-footer'
+
 export default {
-  name: 'Footer'
+  name: 'Footer',
+  components: {
+    HFooter
+  }
 }
 </script>
 
